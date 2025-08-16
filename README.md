@@ -1,17 +1,15 @@
 # 👋 Hi there, I'm Kevin Davra!
-
 <picture>
   <source
     media="(prefers-color-scheme: dark)"
-    srcset="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/financial-dashboard-dark.svg"
+    srcset="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/data-analytics-dark.svg"
   />
   <source
     media="(prefers-color-scheme: light)"
-    srcset="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/financial-dashboard-light.svg"
+    srcset="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/data-analytics-light.svg"
   />
-  <img alt="Financial Dashboard Analytics" src="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/financial-dashboard-light.svg" />
+  <img alt="Data Analytics & Financial Modeling" src="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/data-analytics-light.svg" />
 </picture>
-
 <div align="center">
 
 🚀 Financial Analyst | 💻 Fintech Enthusiast | 📊 Data-Driven Innovator  
