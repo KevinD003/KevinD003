@@ -3,13 +3,13 @@
 <picture>
   <source
     media="(prefers-color-scheme: dark)"
-    srcset="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/finance-banner-dark.svg"
+    srcset="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/financial-dashboard-dark.svg"
   />
   <source
     media="(prefers-color-scheme: light)"
-    srcset="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/finance-banner-light.svg"
+    srcset="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/financial-dashboard-light.svg"
   />
-  <img alt="Financial Analyst Banner" src="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/finance-banner-light.svg" />
+  <img alt="Financial Dashboard Analytics" src="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/financial-dashboard-light.svg" />
 </picture>
 
 <div align="center">
