@@ -1,193 +1,147 @@
----
-# Display name
-title: Kevin Davra
+# 👋 Hi there, I'm Kevin Davra!
 
-# Name pronunciation (optional)
-name_pronunciation: Kevin G. Davra
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/finance-banner-dark.svg"
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/finance-banner-light.svg"
+  />
+  <img alt="Financial Analyst Banner" src="https://raw.githubusercontent.com/kevindavra/kevindavra/main/assets/finance-banner-light.svg" />
+</picture>
 
-# Full name (for SEO)
-first_name: Kevin
-last_name: Davra
+<div align="center">
 
-# Status emoji
-status:
-  icon: ☕️
+🚀 Financial Analyst | 💻 Fintech Enthusiast | 📊 Data-Driven Innovator  
 
-# Is this the primary user of the site?
-superuser: true
+</div>
 
-# Highlight the author in author lists? (true/false)
-highlight_name: true
-
-# Role/position/tagline
-role: Financial Analyst
-
-# Social network links
-# Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
-profiles:
-  - icon: at-symbol
-    url: 'mailto:davraken@gmail.com'
-    label: E-mail Me
-  - icon: brands/x
-    url: https://twitter.com/Kevin_Davra03
-  - icon: brands/instagram
-    url: https://www.instagram.com/its_kevin_davra
-  - icon: brands/linkedin
-    url: https://www.linkedin.com/in/kevin-davra-003
-
-interests:
-  - Investment Banking
-  - Financial Analysis
-  - Private Equity
-  - Mergers and Acquisitions
-  - Financial Planning and Analysis
-  - Cryptocurrency
-
-education:
-  - area: Master of Science in Mathematical Finance
-    institution: Naveen Jindal School of Management, (University of Texas at Dallas)
-    date_start: 2023-08-17
-    date_end: 2025-05-31
-    summary: |
-      Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
-    button:
-      text: 'Read Thesis'
-      url: 'https://example.com'
-  - area: MEng Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
-    summary: |
-      GPA: 3.8/4.0
-
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - area: BSc Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
-    summary: |
-      GPA: 3.4/4.0
-      
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-work:
-  - position: Director of Cloud Infrastructure
-    company_name: GenCoin
-    company_url: ''
-    company_logo: ''
-    date_start: 2021-01-01
-    date_end: ''
-    summary: |2-
-      Responsibilities include:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - position: Backend Software Engineer
-    company_name: X
-    company_url: ''
-    company_logo: ''
-    date_start: 2016-01-01
-    date_end: 2020-12-31
-    summary: |
-      Responsibilities include:
-      - Migrated infrastructure to a new data center
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-
-# Skills
-# Add your own SVG icons to `assets/media/icons/`
-skills:
-  - name: Technical Skills
-    items:
-      - name: Python
-        description: ''
-        percent: 80
-        icon: code-bracket
-      - name: Data Science
-        description: ''
-        percent: 100
-        icon: chart-bar
-      - name: SQL
-        description: ''
-        percent: 40
-        icon: circle-stack
-  - name: Hobbies
-    color: '#eeac02'
-    color_border: '#f0bf23'
-    items:
-      - name: Hiking
-        description: ''
-        percent: 60
-        icon: person-simple-walk
-      - name: Cats
-        description: ''
-        percent: 100
-        icon: cat
-      - name: Photography
-        description: ''
-        percent: 80
-        icon: camera
-
-languages:
-  - name: English
-    percent: 100
-  - name: Chinese
-    percent: 75
-  - name: Portuguese
-    percent: 25
-
-# Awards.
-#   Add/remove as many awards below as you like.
-#   Only `title`, `awarder`, and `date` are required.
-#   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
-awards:
-  - title: Neural Networks and Deep Learning
-    url: https://www.coursera.org/learn/neural-networks-deep-learning
-    date: '2023-11-25'
-    awarder: Coursera
-    icon: coursera
-    summary: |
-      I studied the foundational concept of neural networks and deep learning. By the end, I was familiar with the significant technological trends driving the rise of deep learning; build, train, and apply fully connected deep neural networks; implement efficient (vectorized) neural networks; identify key parameters in a neural network’s architecture; and apply deep learning to your own applications.
-  - title: Blockchain Fundamentals
-    url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
-    date: '2023-07-01'
-    awarder: edX
-    icon: edx
-    summary: |
-      Learned:
-      - Synthesize your own blockchain solutions
-      - Gain an in-depth understanding of the specific mechanics of Bitcoin
-      - Understand Bitcoin’s real-life applications and learn how to attack and destroy Bitcoin, Ethereum, smart contracts and Dapps, and alternatives to Bitcoin’s Proof-of-Work consensus algorithm
-  - title: 'Object-Oriented Programming in R'
-    url: https://www.datacamp.com/courses/object-oriented-programming-with-s3-and-r6-in-r
-    certificate_url: https://www.datacamp.com
-    date: '2023-01-21'
-    awarder: datacamp
-    icon: datacamp
-    summary: |
-      Object-oriented programming (OOP) lets you specify relationships between functions and the objects that they can act on, helping you manage complexity in your code. This is an intermediate level course, providing an introduction to OOP, using the S3 and R6 systems. S3 is a great day-to-day R programming tool that simplifies some of the functions that you write. R6 is especially useful for industry-specific analyses, working with web APIs, and building GUIs.
 ---
 
-## About Me
+## 🚀 About Me
+I'm a **Financial Analyst** and **MS Finance student at The University of Texas at Dallas**, passionate about transforming traditional finance through **technology and data-driven innovation**.  
 
-Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Currently working as a **Financial Planning & Analyst at Niren Patel, CPA PLLC**, I've:  
+- Built **financial models worth $120.5M** to secure funding from major banks  
+- Optimized budgeting processes achieving **10% higher profit margins**  
+- Automated reporting systems reducing manual workload by **20%**  
+- Developed an **AI-powered tax startup** that could revolutionize tax filing  
 
-<!--
-**KevinD003/KevinD003** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+---
 
-Here are some ideas to get you started:
+## 💼 What I Do
+- 📊 **Financial Modeling & Analysis** – DCF, risk simulations, forecasting frameworks  
+- 🤖 **Finance Automation** – Python & SQL solutions to streamline financial processes  
+- 📈 **Data Analytics** – Turning financial data into actionable business insights  
+- 🚀 **Fintech Innovation** – Building AI-powered solutions for tax preparation & automation  
+- 💻 **Dashboard Development** – Power BI & Tableau interactive visualizations  
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+---
+
+## 🎓 Education
+- **MS Finance** | The University of Texas at Dallas *(Aug 2023 – May 2025)*  
+  *Focus: Analytics of Finance, Financial Modeling for Valuation, Real Estate Finance*  
+
+- **Bachelor of Commerce** | University of Mumbai *(Jul 2020 – Apr 2023)*  
+
+- **Chartered Accountant Foundation** | Institute of Chartered Accountants of India *(Jul 2021)*  
+
+---
+
+## 🛠️ Technical Arsenal
+**Programming & Analytics**  
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)  
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=postgresql&logoColor=white)  
+![R](https://img.shields.io/badge/R-276DC3?style=flat&logo=r&logoColor=white)  
+![VBA](https://img.shields.io/badge/VBA-217346?style=flat&logo=microsoft-excel&logoColor=white)  
+
+**Visualization & BI Tools**  
+![Power BI](https://img.shields.io/badge/PowerBI-F2C811?style=flat&logo=powerbi&logoColor=black)  
+![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat&logo=tableau&logoColor=white)  
+![Excel](https://img.shields.io/badge/Excel-217346?style=flat&logo=microsoft-excel&logoColor=white)  
+
+**Finance & ERP Tools**  
+![QuickBooks](https://img.shields.io/badge/QuickBooks-2CA01C?style=flat&logo=intuit&logoColor=white)  
+![Dynamics 365](https://img.shields.io/badge/Dynamics%20365-002050?style=flat&logo=microsoft-dynamics-365&logoColor=white)  
+![Bloomberg](https://img.shields.io/badge/Bloomberg-000000?style=flat&logo=bloomberg&logoColor=white)  
+![Capital IQ](https://img.shields.io/badge/CapitalIQ-0066CC?style=flat)  
+
+---
+
+## 💼 Professional Highlights
+
+### 📌 Financial Planning & Analyst | Niren Patel, CPA PLLC *(Feb 2025 – May 2025)*
+- Structured financial models worth **$120.5M** for successful funding  
+- Achieved **10% higher profit margins** with optimized budgeting  
+- Built **Power BI dashboards** reducing reporting time by 20%  
+- Automated **Python & SQL pipelines** improving data accuracy by 15%  
+
+### 📌 Financial Analyst | Niren Patel & Associates *(Oct 2022 – Jun 2023)*
+- Ensured **100% GAAP compliance** in financial statements  
+- Enhanced forecast accuracy by **6% QoQ**  
+- Streamlined A/P & A/R processes, reducing processing time by **20%**  
+
+### 📌 Financial Analyst | Neelam Global Pvt. Ltd. *(Nov 2021 – Oct 2022)*
+- Built **DCF & sensitivity models** improving capital allocation by **15%**  
+- Analyzed pharmaceutical market opportunities using **advanced analytics**  
+- Solved integration challenges boosting team efficiency by **17%**  
+
+---
+
+## 🏆 Featured Projects
+- 🤖 **AI-Powered Tax Preparation Platform** – AI-driven compliance automation & tax optimization *(Startup – preparing for YC)*  
+- 📊 **Strategic Risk Modeling for McDonald's** – Monte Carlo simulations to assess operational & market risks *(Oct–Nov 2024)*  
+- 💰 **Integrated DCF Framework for Hightrek INC** – Multi-method valuation for long-term investment viability *(Mar–Apr 2024)*  
+- 📈 **Portfolio Optimization & Risk Analysis** – Quantitative strategies for portfolio risk reduction *(Oct–Dec 2023)*  
+
+---
+
+## 🌟 Leadership & Community
+- 🎓 **Graduate Senator** – UTD Student Government  
+- 📌 **Member** – UTD Graduate Finance Council  
+- 💰 **Treasurer** – Rotaract Club of Mithibai College  
+
+---
+
+## 📊 GitHub Stats
+<div align="center">
+
+![Kevin's GitHub Stats](https://github-readme-stats.vercel.app/api?username=Kevindavra&show_icons=true&theme=radical)  
+
+</div>
+
+---
+
+## 🎯 Current Focus
+- 🔍 Actively pursuing **FP&A Manager / Senior Financial Analyst roles**  
+- 🚀 Building **AI-powered fintech solutions**  
+- 📚 Expanding expertise in **machine learning & financial technology**  
+- 🤝 Networking with industry leaders & alumni  
+
+---
+
+## 🎉 Fun Facts About Me
+- 💡 Building an AI startup that could transform tax preparation  
+- 📊 Love designing financial models that turn data into business insights  
+- 🌍 Fluent in **English & Gujarati**  
+- ⚡ Believe in **systematic approaches to finance and life**  
+- ☕ Coffee fuels my late-night financial modeling sessions  
+
+---
+
+## 🤝 Let's Connect!
+📧 Email: **davraken@gmail.com**  
+💼 LinkedIn: [Kevin Davra](https://www.linkedin.com/in/kevindavra)  
+📍 Dallas, TX  
+
+---
+
+<div align="center">
+
+💡 *"In finance, precision meets innovation. Every model tells a story, every analysis reveals an opportunity."* 📈  
+
+🚀 Ready to transform finance through technology? Let’s build the future together!  
+
+</div>
