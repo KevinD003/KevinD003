@@ -387,9 +387,12 @@ function build() {
   const rx = track(sim.keys, (k) => k.x - (RUNNER_W * PIX) / 2, DUR);
   const ry = track(sim.keys, (k) => k.y - RUNNER_H * PIX, DUR);
 
-  const anim = (attr, s, extra = "") =>
-    `<animate attributeName="${attr}" dur="${n(DUR)}s" repeatCount="indefinite" calcMode="linear" ` +
-    `values="${s.values}" keyTimes="${s.keyTimes}"${extra}/>`;
+  // calcMode is a parameter, not an appended string: emitting it twice is a
+  // duplicate attribute, which is a fatal error when the SVG is served as a
+  // standalone file (HTML parsing silently tolerates it, XML does not).
+  const anim = (attr, s, mode = "linear") =>
+    `<animate attributeName="${attr}" dur="${n(DUR)}s" repeatCount="indefinite" calcMode="${mode}" ` +
+    `values="${s.values}" keyTimes="${s.keyTimes}"/>`;
 
   // --- terrain: day pillars and the chasms that replaced quiet stretches
   const terrain = level.segs
@@ -551,8 +554,8 @@ function build() {
             .map((v, i) => `${v} ${ry.values.split(";")[i]}`)
             .join(";")}" keyTimes="${rx.keyTimes}"/>
         <g transform="scale(${PIX})">
-          <g>${runFrames}${anim("opacity", groundTrack, ' calcMode="discrete"')}</g>
-          <g opacity="0">${jumpPaths}${anim("opacity", airTrack, ' calcMode="discrete"')}</g>
+          <g>${runFrames}${anim("opacity", groundTrack, "discrete")}</g>
+          <g opacity="0">${jumpPaths}${anim("opacity", airTrack, "discrete")}</g>
         </g>
       </g>
     </g>
@@ -569,7 +572,41 @@ ${scoreEls}
 `;
 }
 
+/**
+ * A README banner is fetched as a standalone image and parsed as strict XML.
+ * Duplicate attributes and unbalanced tags are fatal there but invisible when
+ * the same markup is inlined into an HTML test page, so the generator refuses
+ * to emit anything that is not well-formed.
+ */
+function assertWellFormed(xml) {
+  const stack = [];
+  const tag = /<(\/?)([a-zA-Z][\w:-]*)((?:\s+[\w:-]+\s*=\s*"[^"]*")*)\s*(\/?)>/g;
+  let m;
+  while ((m = tag.exec(xml))) {
+    const [, closing, name, attrs, selfClose] = m;
+    if (!closing) {
+      const seen = new Set();
+      for (const a of attrs.matchAll(/([\w:-]+)\s*=/g)) {
+        if (seen.has(a[1]))
+          throw new Error(`duplicate attribute "${a[1]}" on <${name}> at offset ${m.index}`);
+        seen.add(a[1]);
+      }
+    }
+    if (closing) {
+      const open = stack.pop();
+      if (open !== name)
+        throw new Error(`closing </${name}> does not match <${open}> at offset ${m.index}`);
+    } else if (!selfClose) {
+      stack.push(name);
+    }
+  }
+  if (stack.length) throw new Error(`unclosed tag(s): ${stack.join(", ")}`);
+  const amps = xml.match(/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g);
+  if (amps) throw new Error(`${amps.length} unescaped "&"`);
+}
+
 const svg = build();
+assertWellFormed(svg);
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, svg);
 
