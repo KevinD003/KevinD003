@@ -1,14 +1,14 @@
 <div align="center">
 
 <a href="https://kevind003.github.io/KevinD003/">
-  <img src="https://raw.githubusercontent.com/KevinD003/KevinD003/main/assets/commit-run.svg" alt="COMMIT RUN — a pixel runner crossing a landscape built from my real GitHub contribution history" width="100%">
+  <img src="https://raw.githubusercontent.com/KevinD003/KevinD003/main/assets/commit-run.svg?v=202608161044" alt="COMMIT RUN — a pixel runner crossing a landscape built from my real GitHub contribution history" width="100%">
 </a>
 
-### ▶ [**PLAY IT**](https://kevind003.github.io/KevinD003/) ◀
-
-<sub>Not a screenshot, and not a stock widget — the level above **is my commit history**.<br>
-Every pillar is one real day, its height is that day's commit count, and every quiet<br>
-stretch became a chasm. It regenerates itself every morning.</sub>
+<sub>**That is not a screenshot or a stock widget — it is running right now, on this page.**<br>
+The level **is my commit history**: every pillar is one real day, its height is that day's<br>
+commit count, and every quiet stretch became a chasm. It regenerates itself every morning.<br>
+<br>
+<sub>Want to play it yourself instead of watching? → <a href="https://kevind003.github.io/KevinD003/">take the controls</a></sub></sub>
 
 </div>
 

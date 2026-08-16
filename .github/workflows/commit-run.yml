@@ -35,11 +35,18 @@ jobs:
       - name: Generate level + animation
         run: node tools/gen-runner.mjs
 
+      - name: Bust the image cache
+        # GitHub proxies README images and caches them hard. Without a version
+        # token that changes with the content, a regenerated banner is never
+        # actually shown on the profile — the old frame is served indefinitely.
+        run: |
+          sed -i -E "s|(commit-run\.svg\?v=)[0-9]+|\1$(date -u +%Y%m%d%H%M)|" README.md
+
       - name: Commit if the level changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/contributions.json assets/commit-run.svg docs/level.js
+          git add data/contributions.json assets/commit-run.svg docs/level.js README.md
           if git diff --staged --quiet; then
             echo "No change in contribution data — nothing to commit."
           else
