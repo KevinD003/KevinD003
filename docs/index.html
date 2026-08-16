@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>COMMIT RUN — KevinD003</title>
+<meta name="description" content="A playable platformer whose level is generated from KevinD003's real GitHub contribution history.">
+<style>
+  :root{
+    --bg:#0a0e14; --deep:#070a0f; --cyan:#00e5ff; --pink:#ff2e88;
+    --yellow:#ffd400; --rock:#16323d; --rock-top:#1d4757; --text:#7fa6b4;
+    --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:radial-gradient(120% 90% at 50% 0%,#0d1a24 0%,var(--bg) 60%);
+    color:var(--text);font-family:var(--mono);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:14px;padding:16px;min-height:100%;
+  }
+  h1{margin:0;font-size:19px;letter-spacing:6px;color:var(--cyan);font-weight:700}
+  .sub{font-size:12px;letter-spacing:1px;opacity:.75;margin:0;text-align:center}
+  .wrap{position:relative;width:100%;max-width:960px}
+  canvas{
+    width:100%;height:auto;display:block;border-radius:12px;
+    border:2px solid transparent;
+    background:
+      linear-gradient(var(--bg),var(--bg)) padding-box,
+      linear-gradient(135deg,var(--cyan),var(--pink),var(--yellow)) border-box;
+    touch-action:none;
+  }
+  .overlay{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:10px;text-align:center;
+    background:rgba(7,10,15,.86);border-radius:12px;padding:20px;
+  }
+  .overlay.hidden{display:none}
+  .overlay h2{margin:0;color:var(--yellow);letter-spacing:4px;font-size:22px}
+  .overlay p{margin:0;font-size:13px;max-width:44ch;line-height:1.6}
+  kbd{
+    background:#12222b;border:1px solid #24505f;border-bottom-width:2px;
+    border-radius:4px;padding:1px 6px;color:var(--cyan);font-size:12px;
+  }
+  button{
+    font-family:var(--mono);font-size:14px;letter-spacing:2px;font-weight:700;
+    color:var(--bg);background:var(--cyan);border:0;border-radius:6px;
+    padding:11px 22px;cursor:pointer;
+  }
+  button:hover{background:#5cf0ff}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;font-size:11px;opacity:.8}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .sw{width:11px;height:11px;border-radius:2px;display:inline-block}
+  a{color:var(--cyan)}
+  .touch{display:none;gap:10px;width:100%;max-width:960px}
+  .touch button{flex:1;padding:18px;background:#12222b;color:var(--cyan);border:1px solid #24505f}
+  @media (hover:none) and (pointer:coarse){.touch{display:flex}}
+</style>
+</head>
+<body>
+
+<h1>COMMIT RUN</h1>
+<p class="sub">Every pillar is one real day of my GitHub history. Height = commits that day.<br>Quiet stretches became the chasms.</p>
+
+<div class="wrap">
+  <canvas id="game" width="960" height="420" aria-label="Commit Run game"></canvas>
+  <div class="overlay" id="overlay">
+    <h2 id="title">COMMIT RUN</h2>
+    <p id="msg">Cross my contribution history without falling in.</p>
+    <p style="font-size:12px;opacity:.8">
+      <kbd>←</kbd> <kbd>→</kbd> move &nbsp;·&nbsp; <kbd>space</kbd> jump &nbsp;·&nbsp; hold to jump higher
+    </p>
+    <button id="start">START</button>
+  </div>
+</div>
+
+<div class="touch">
+  <button id="tl">◀</button><button id="tj">JUMP</button><button id="tr">▶</button>
+</div>
+
+<div class="legend">
+  <span><i class="sw" style="background:#0d6b7d"></i>1–7 commits</span>
+  <span><i class="sw" style="background:#9c1f5a"></i>8–14</span>
+  <span><i class="sw" style="background:#b8880a"></i>15+</span>
+  <span><i class="sw" style="background:var(--yellow)"></i>commit gem</span>
+</div>
+<p class="sub" style="opacity:.55">
+  Level regenerates daily from live data · <a href="https://github.com/KevinD003">github.com/KevinD003</a>
+</p>
+
+<script src="level.js"></script>
+<script>
+(() => {
+  "use strict";
+  const L = window.LEVEL;
+  const cv = document.getElementById("game");
+  const ctx = cv.getContext("2d");
+  const W = cv.width, H = cv.height;
+
+  // The generated level is authored against a 260px-tall frame; scale it up.
+  const SCALE = 1.55;
+  const GROUND = L.groundY * SCALE;
+  const segs = L.segs.map(s => ({
+    ...s,
+    x: s.x * SCALE, w: s.w * SCALE,
+    top: s.top === null ? null : s.top * SCALE,
+  }));
+  const LEVEL_W = L.width * SCALE;
+
+  const TIERS = [
+    { min: 15, fill: "#b8880a", top: "#ffd400" },
+    { min: 8,  fill: "#9c1f5a", top: "#ff2e88" },
+    { min: 1,  fill: "#0d6b7d", top: "#00e5ff" },
+  ];
+  const tier = c => TIERS.find(t => c >= t.min) || TIERS[2];
+
+  const GRAV = 2400, MOVE = 300, JUMP_V = -790, MAX_FALL = 1100;
+  const COYOTE = 0.1, JUMP_BUF = 0.12, CUT = 0.45;
+
+  const gems = segs.filter(s => s.type === "day" && s.count > 0)
+                   .map(s => ({ x: s.x + s.w/2, y: s.top - 26, r: 9, got: false, n: s.count }));
+
+  const spawn = () => {
+    const first = segs.find(s => s.type === "day");
+    return { x: first.x + first.w/2, y: first.top - 40 };
+  };
+
+  let P, cam, score, elapsed, running, done, coyote, buffer, particles, best;
+  best = Number(localStorage.getItem("commitrun.best") || 0) || null;
+
+  function reset() {
+    const s = spawn();
+    P = { x: s.x, y: s.y, vx: 0, vy: 0, w: 22, h: 30, ground: false, face: 1, anim: 0 };
+    cam = 0; score = 0; elapsed = 0; done = false;
+    coyote = 0; buffer = 0; particles = [];
+    gems.forEach(g => g.got = false);
+  }
+  reset();
+
+  // ---- input
+  const keys = new Set();
+  const DOWN = ["ArrowLeft","ArrowRight","ArrowUp","Space","KeyA","KeyD","KeyW"];
+  addEventListener("keydown", e => {
+    if (DOWN.includes(e.code)) e.preventDefault();
+    if ((e.code === "Space" || e.code === "ArrowUp" || e.code === "KeyW")) buffer = JUMP_BUF;
+    keys.add(e.code);
+  }, { passive:false });
+  addEventListener("keyup", e => keys.delete(e.code));
+
+  const touch = { l:false, r:false, j:false };
+  const bind = (id, set) => {
+    const el = document.getElementById(id);
+    const on  = e => { e.preventDefault(); set(true);  if (id==="tj") buffer = JUMP_BUF; };
+    const off = e => { e.preventDefault(); set(false); };
+    el.addEventListener("touchstart", on, {passive:false});
+    el.addEventListener("touchend", off, {passive:false});
+    el.addEventListener("mousedown", on);
+    addEventListener("mouseup", off);
+  };
+  bind("tl", v => touch.l = v); bind("tr", v => touch.r = v); bind("tj", v => touch.j = v);
+
+  const left  = () => keys.has("ArrowLeft")  || keys.has("KeyA") || touch.l;
+  const right = () => keys.has("ArrowRight") || keys.has("KeyD") || touch.r;
+  const jumpHeld = () => keys.has("Space") || keys.has("ArrowUp") || keys.has("KeyW") || touch.j;
+
+  // ---- collision: solid tops only (chasms have no floor)
+  function solidAt(x) {
+    for (const s of segs) {
+      if (s.type !== "day") continue;
+      if (x >= s.x && x <= s.x + s.w) return s.top;
+    }
+    return null;
+  }
+
+  function step(dt) {
+    const dir = (right() ? 1 : 0) - (left() ? 1 : 0);
+    if (dir) P.face = dir;
+    P.vx = dir * MOVE;
+
+    P.ground ? (coyote = COYOTE) : (coyote -= dt);
+    buffer -= dt;
+
+    if (buffer > 0 && coyote > 0) { P.vy = JUMP_V; P.ground = false; coyote = 0; buffer = 0;
+      for (let i=0;i<7;i++) particles.push({x:P.x, y:P.y, vx:(Math.random()-.5)*90, vy:Math.random()*60, life:.35, c:"#00e5ff"});
+    }
+    if (P.vy < 0 && !jumpHeld()) P.vy *= Math.pow(CUT, dt*60/8);
+
+    P.vy = Math.min(MAX_FALL, P.vy + GRAV*dt);
+    P.x += P.vx*dt;
+    P.y += P.vy*dt;
+    P.x = Math.max(10, Math.min(LEVEL_W-10, P.x));
+
+    // land on a pillar top
+    const topL = solidAt(P.x - P.w/2), topR = solidAt(P.x + P.w/2);
+    const top = topL === null ? topR : topR === null ? topL : Math.min(topL, topR);
+    P.ground = false;
+    if (top !== null && P.vy >= 0 && P.y >= top && P.y - P.vy*dt <= top + 24) {
+      P.y = top; P.vy = 0; P.ground = true;
+    }
+    if (P.ground && Math.abs(P.vx) > 10) P.anim += dt*11;
+
+    // fell in a chasm
+    if (P.y > H + 120) {
+      const s = spawn(); P.x = s.x; P.y = s.y; P.vy = 0; score = Math.max(0, score - 5);
+    }
+
+    for (const g of gems) {
+      if (!g.got && Math.hypot(g.x-P.x, g.y-(P.y-P.h/2)) < 30) {
+        g.got = true; score += g.n;
+        for (let i=0;i<14;i++) particles.push({x:g.x,y:g.y,vx:(Math.random()-.5)*220,vy:(Math.random()-.5)*220,life:.5,c:"#ffd400"});
+      }
+    }
+
+    particles = particles.filter(p => (p.life -= dt) > 0);
+    particles.forEach(p => { p.x += p.vx*dt; p.y += p.vy*dt; p.vy += 500*dt; });
+
+    const last = [...segs].reverse().find(s => s.type === "day");
+    if (!done && P.x >= last.x + last.w/2 - 6 && P.ground) {
+      done = true; running = false;
+      if (!best || elapsed < best) { best = elapsed; localStorage.setItem("commitrun.best", String(best)); }
+      show("RUN COMPLETE",
+        `${score} / ${L.total} commits collected in ${elapsed.toFixed(2)}s` +
+        (best ? ` · best ${best.toFixed(2)}s` : ""), "RUN AGAIN");
+    }
+
+    cam = Math.max(0, Math.min(LEVEL_W - W, P.x - W*0.42));
+  }
+
+  // ---- render
+  const stars = Array.from({length:70}, (_,i) => ({
+    x:(i*277)%(LEVEL_W+W), y:20+((i*131)%(GROUND-90)), r:i%5===0?1.7:1, o:i%3===0?.34:.16
+  }));
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    const sky = ctx.createLinearGradient(0,0,0,H);
+    sky.addColorStop(0,"#0d1a24"); sky.addColorStop(1,"#0a0e14");
+    ctx.fillStyle = sky; ctx.fillRect(0,0,W,H);
+
+    ctx.save(); ctx.translate(-cam*0.35,0);
+    for (const s of stars) { ctx.globalAlpha=s.o; ctx.fillStyle="#00e5ff";
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,7); ctx.fill(); }
+    ctx.restore(); ctx.globalAlpha=1;
+
+    const hz = ctx.createLinearGradient(0,GROUND-70,0,GROUND);
+    hz.addColorStop(0,"rgba(0,229,255,0)"); hz.addColorStop(1,"rgba(0,229,255,.10)");
+    ctx.fillStyle=hz; ctx.fillRect(0,GROUND-70,W,70);
+
+    ctx.save(); ctx.translate(-cam,0);
+
+    for (const s of segs) {
+      if (s.type === "gap") {
+        ctx.fillStyle="#070a0f"; ctx.fillRect(s.x,GROUND,s.w,H-GROUND);
+        ctx.strokeStyle="rgba(255,46,136,.5)"; ctx.lineWidth=2;
+        ctx.beginPath(); ctx.moveTo(s.x,GROUND); ctx.lineTo(s.x,H);
+        ctx.moveTo(s.x+s.w,GROUND); ctx.lineTo(s.x+s.w,H); ctx.stroke();
+        ctx.fillStyle="rgba(255,46,136,.8)"; ctx.font="700 12px ui-monospace,SFMono-Regular,Menlo,monospace";
+        ctx.textAlign="center"; ctx.fillText(`${s.days} QUIET DAYS`, s.x+s.w/2, GROUND+26);
+        continue;
+      }
+      if (s.count === 0) {
+        ctx.fillStyle="#16323d"; ctx.fillRect(s.x,GROUND,s.w,H-GROUND);
+        ctx.fillStyle="#1d4757"; ctx.fillRect(s.x,GROUND,s.w,3);
+      } else {
+        const t = tier(s.count);
+        ctx.fillStyle=t.fill; ctx.globalAlpha=.9;
+        ctx.fillRect(s.x,s.top,s.w,H-s.top); ctx.globalAlpha=1;
+        ctx.fillStyle=t.top; ctx.fillRect(s.x,s.top,s.w,4);
+        ctx.fillStyle="#04141a"; ctx.font="700 13px ui-monospace,SFMono-Regular,Menlo,monospace";
+        ctx.textAlign="center"; ctx.fillText(String(s.count), s.x+s.w/2, s.top+22);
+      }
+      ctx.fillStyle="rgba(127,166,180,.55)"; ctx.font="10px ui-monospace,SFMono-Regular,Menlo,monospace";
+      ctx.textAlign="center"; ctx.fillText(s.date.slice(5), s.x+s.w/2, H-9);
+    }
+
+    const bob = Math.sin(performance.now()/300)*4;
+    for (const g of gems) {
+      if (g.got) continue;
+      ctx.save(); ctx.translate(g.x, g.y+bob); ctx.rotate(Math.PI/4);
+      ctx.shadowColor="#ffd400"; ctx.shadowBlur=14; ctx.fillStyle="#ffd400";
+      ctx.fillRect(-7,-7,14,14); ctx.restore();
+    }
+    ctx.shadowBlur=0;
+
+    for (const p of particles) {
+      ctx.globalAlpha=Math.max(0,p.life*2); ctx.fillStyle=p.c;
+      ctx.fillRect(p.x-2,p.y-2,4,4);
+    }
+    ctx.globalAlpha=1;
+
+    drawRunner();
+    ctx.restore();
+
+    ctx.fillStyle="rgba(7,10,15,.92)"; ctx.fillRect(0,0,W,42);
+    ctx.strokeStyle="#1d3540"; ctx.beginPath(); ctx.moveTo(0,42); ctx.lineTo(W,42); ctx.stroke();
+    ctx.fillStyle="#00e5ff"; ctx.font="700 16px ui-monospace,SFMono-Regular,Menlo,monospace"; ctx.textAlign="left";
+    ctx.fillText("COMMIT RUN", 18, 27);
+    ctx.fillStyle="#7fa6b4"; ctx.font="13px ui-monospace,SFMono-Regular,Menlo,monospace";
+    ctx.fillText(`// ${L.from} → ${L.to}`, 158, 27);
+    ctx.fillStyle="#ffd400"; ctx.font="700 17px ui-monospace,SFMono-Regular,Menlo,monospace"; ctx.textAlign="right";
+    ctx.fillText(`${String(score).padStart(3,"0")} / ${L.total}`, W-140, 27);
+    ctx.fillStyle="#7fa6b4"; ctx.font="13px ui-monospace,SFMono-Regular,Menlo,monospace";
+    ctx.fillText(`${elapsed.toFixed(1)}s`, W-18, 27);
+  }
+
+  function drawRunner() {
+    const x = Math.round(P.x), y = Math.round(P.y);
+    const legs = P.ground ? Math.floor(P.anim)%4 : 4;
+    ctx.save(); ctx.translate(x,y); ctx.scale(P.face,1);
+    ctx.shadowColor="#00e5ff"; ctx.shadowBlur=10;
+    ctx.fillStyle="#00e5ff";
+    ctx.fillRect(-8,-30,16,10);                       // head
+    ctx.fillStyle="#08323d"; ctx.fillRect(-5,-27,10,5);
+    ctx.fillStyle="#fff"; ctx.fillRect(-3,-26,3,3);   // visor glint
+    ctx.fillStyle="#00e5ff";
+    ctx.fillRect(-7,-20,14,12);                       // torso
+    const swing = [[-6,4],[0,0],[6,-4],[0,0],[-5,5]][legs];
+    ctx.fillRect(-6, -8, 4, 8+swing[0]*0.5);          // legs
+    ctx.fillRect(2, -8, 4, 8+swing[1]*0.5);
+    ctx.fillRect(-11,-19,4,9);                        // arms
+    ctx.fillRect(7,-19,4,9);
+    ctx.restore(); ctx.shadowBlur=0;
+  }
+
+  // ---- overlay + loop
+  const ov = document.getElementById("overlay");
+  const show = (t,m,btn) => {
+    document.getElementById("title").textContent = t;
+    document.getElementById("msg").textContent = m;
+    document.getElementById("start").textContent = btn;
+    ov.classList.remove("hidden");
+  };
+  document.getElementById("start").onclick = () => {
+    ov.classList.add("hidden"); reset(); running = true; last = performance.now();
+  };
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(0.033, (now-last)/1000); last = now;
+    if (running) { elapsed += dt; step(dt); }
+    draw();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
