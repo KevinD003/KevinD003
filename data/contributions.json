@@ -1,22 +1,8 @@
 {
   "user": "KevinD003",
   "total": 80,
-  "generatedFor": "2026-08-16",
+  "generatedFor": "2026-08-23",
   "weeks": [
-    {
-      "firstDay": "2025-08-17",
-      "total": 0,
-      "peak": 0,
-      "days": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    },
     {
       "firstDay": "2025-08-24",
       "total": 0,
@@ -742,6 +728,14 @@
         0,
         0,
         0,
+        0
+      ]
+    },
+    {
+      "firstDay": "2026-08-23",
+      "total": 0,
+      "peak": 0,
+      "days": [
         0
       ]
     }
