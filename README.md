@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://kevind003.github.io/KevinD003/">
-  <img src="https://raw.githubusercontent.com/KevinD003/KevinD003/main/assets/commit-run.svg?v=202608240503" alt="COMMIT RUN — a pixel runner crossing a landscape built from my real GitHub contribution history" width="100%">
+  <img src="https://raw.githubusercontent.com/KevinD003/KevinD003/main/assets/commit-run.svg?v=202608250455" alt="COMMIT RUN — a pixel runner crossing a landscape built from my real GitHub contribution history" width="100%">
 </a>
 
 <sub>**That is not a screenshot or a stock widget — it is running right now, on this page.**<br>
