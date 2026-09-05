@@ -64,6 +64,28 @@ tools/gen-runner.mjs            data     ->  assets/commit-run.svg  +  docs/leve
 
 <br>
 
+## The contribution graph, broken
+
+<div align="center">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="https://raw.githubusercontent.com/KevinD003/KevinD003/github-breakout/images/breakout-dark.svg"
+    />
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="https://raw.githubusercontent.com/KevinD003/KevinD003/github-breakout/images/breakout-light.svg"
+    />
+    <img
+      src="https://raw.githubusercontent.com/KevinD003/KevinD003/github-breakout/images/breakout-light.svg"
+      alt="Breakout game generated from my real GitHub contribution graph"
+      width="100%"
+    />
+  </picture>
+</div>
+
+<br>
+
 ## The contribution graph, eaten
 
 <div align="center">
