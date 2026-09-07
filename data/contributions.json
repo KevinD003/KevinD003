@@ -1,6 +1,6 @@
 {
   "user": "KevinD003",
-  "total": 112,
+  "total": 116,
   "generatedFor": "2026-09-06",
   "weeks": [
     {
@@ -733,9 +733,10 @@
     },
     {
       "firstDay": "2026-09-06",
-      "total": 0,
-      "peak": 0,
+      "total": 4,
+      "peak": 4,
       "days": [
+        4,
         0
       ]
     }
