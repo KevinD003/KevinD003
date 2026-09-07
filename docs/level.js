@@ -1,15 +1,15 @@
 window.LEVEL = {
- "total": 112,
+ "total": 116,
  "maxCount": 10,
- "from": "2026-07-13",
- "to": "2026-09-06",
+ "from": "2026-07-14",
+ "to": "2026-09-07",
  "groundY": 210,
- "width": 1216,
+ "width": 1266,
  "segs": [
   {
    "type": "gap",
-   "days": 8,
-   "date": "2026-07-13",
+   "days": 7,
+   "date": "2026-07-14",
    "x": 0,
    "w": 104,
    "top": null,
@@ -180,11 +180,20 @@ window.LEVEL = {
   {
    "type": "day",
    "date": "2026-09-06",
-   "count": 0,
+   "count": 4,
    "x": 1166,
    "w": 50,
-   "top": 210,
+   "top": 154,
    "cx": 1191
+  },
+  {
+   "type": "day",
+   "date": "2026-09-07",
+   "count": 0,
+   "x": 1216,
+   "w": 50,
+   "top": 210,
+   "cx": 1241
   }
  ]
 };
