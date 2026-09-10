@@ -1,15 +1,15 @@
 window.LEVEL = {
  "total": 116,
  "maxCount": 10,
- "from": "2026-07-16",
- "to": "2026-09-09",
+ "from": "2026-07-17",
+ "to": "2026-09-10",
  "groundY": 210,
  "width": 1320,
  "segs": [
   {
    "type": "gap",
-   "days": 5,
-   "date": "2026-07-16",
+   "days": 4,
+   "date": "2026-07-17",
    "x": 0,
    "w": 104,
    "top": null,
@@ -188,7 +188,7 @@ window.LEVEL = {
   },
   {
    "type": "gap",
-   "days": 3,
+   "days": 4,
    "date": "2026-09-07",
    "x": 1216,
    "w": 104,
