@@ -1,8 +1,14 @@
-<div align="center">
-
-<a href="https://kevind003.github.io/KevinD003/">
-  <img src="[https://raw.githubusercontent.com/KevinD003/KevinD003/main/assets/commit-run.svg?v=202609210958](https://raw.githubusercontent.com/jagrut70/jagrutvaghasiya/main/example/light.svg" alt="COMMIT RUN — a pixel runner crossing a landscape built from my real GitHub contribution history" width="100%">
-</a>
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="https://raw.githubusercontent.com/jagrut70/jagrutvaghasiya/main/example/dark.svg"
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="https://raw.githubusercontent.com/jagrut70/jagrutvaghasiya/main/example/light.svg"
+  />
+  <img alt="Breakout Game" src="https://raw.githubusercontent.com/jagrut70/jagrutvaghasiya/main/example/light.svg" />
+</picture>
 
 <sub>**That is not a screenshot or a stock widget — it is running right now, on this page.**<br>
 The level **is my commit history**: every pillar is one real day, its height is that day's<br>
