@@ -1,0 +1,39 @@
+name: Recruiter inquiry
+description: Reach out about a role — Kevin gets notified right away.
+title: "[Role] <title> at <company>"
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reaching out. A few details and I'll reply here or at the contact you leave.
+        **This issue is public** — share only what you're comfortable with, or leave just a contact and I'll follow up privately.
+  - type: input
+    id: company
+    attributes:
+      label: Company
+    validations:
+      required: true
+  - type: input
+    id: role
+    attributes:
+      label: Role / title
+    validations:
+      required: true
+  - type: dropdown
+    id: setup
+    attributes:
+      label: Work arrangement
+      options: [On-site, Hybrid, Remote, Flexible]
+  - type: input
+    id: contact
+    attributes:
+      label: Best way to reach you
+      description: LinkedIn URL or work email.
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Anything else
+      description: Team, link to the job description, timeline.

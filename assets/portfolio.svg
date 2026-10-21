@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450" width="1200" height="450" role="img" aria-label="Portfolio by business unit, lines of code: The Desi Events 552K, Vacamodiq 152K, LeadFlow 71K, Tally 67K, NoEfforts 32K, Kailo.fit 21K, STITCHIQ 8.5K.">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#070b14"/><stop offset="100%" stop-color="#0f1a2e"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#c9962b"/><stop offset="100%" stop-color="#f5d77a"/></linearGradient>
+  <style>
+    .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace}
+    .sans{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+    .lbl{font-size:12px;letter-spacing:2.5px;fill:#8ea3c0}
+    .bar{transform-box:fill-box;transform-origin:left;transform:scaleX(0);animation:g 1.1s cubic-bezier(.6,.1,.2,1) forwards}
+    @keyframes g{to{transform:scaleX(1)}}
+    .r{opacity:0;animation:in .6s ease-out forwards}
+    @keyframes in{to{opacity:1}}
+  </style>
+</defs>
+<rect width="1200" height="450" rx="22" fill="url(#bg)"/>
+<rect x="0.5" y="0.5" width="1199" height="449" rx="22" fill="none" stroke="#ffffff" stroke-opacity="0.08"/>
+<text class="mono lbl" x="40" y="42">PORTFOLIO · CAPITAL ALLOCATED (LINES OF CODE)</text>
+<text class="mono lbl" x="1160" y="42" text-anchor="end">TEST FILES · STATUS</text>
+<g class="mono" font-size="11" letter-spacing="2" fill="#5d6f8a">
+<text x="40" y="76">TICKER</text><text x="130" y="76">UNIT</text><text x="430" y="76">ALLOCATION</text>
+</g>
+<line x1="40" y1="84" x2="1160" y2="84" stroke="#ffffff" stroke-opacity="0.08"/>
+<g class="r" style="animation-delay:0.15s">
+  <rect x="40" y="98" width="72" height="26" rx="6" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text class="mono" x="76" y="116" text-anchor="middle" font-size="13" font-weight="700" fill="#f2c55c">$DESI</text>
+  <text class="sans" x="130" y="111" font-size="16" font-weight="700" fill="#f4f6fb">The Desi Events</text>
+  <text class="sans" x="130" y="128" font-size="12" fill="#6f819c">Events · Commerce</text>
+  <rect x="430" y="104" width="460" height="14" rx="7" fill="#ffffff" fill-opacity="0.04"/>
+  <rect class="bar" style="animation-delay:0.40s" x="430" y="104" width="460" height="14" rx="7" fill="url(#gold)"/>
+  <text class="mono" x="902" y="116" font-size="13" fill="#d9e1ee">552K</text>
+  <text class="mono" x="1000" y="116" font-size="13" text-anchor="end" fill="#a9b7cc">721</text>
+  <circle cx="1020" cy="111" r="4" fill="#5ee6a8"/>
+  <text class="mono" x="1032" y="116" font-size="12" letter-spacing="1.5" fill="#5ee6a8">LIVE</text>
+</g>
+<line x1="40" y1="136" x2="1160" y2="136" stroke="#ffffff" stroke-opacity="0.04"/>
+<g class="r" style="animation-delay:0.27s">
+  <rect x="40" y="144" width="72" height="26" rx="6" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text class="mono" x="76" y="162" text-anchor="middle" font-size="13" font-weight="700" fill="#f2c55c">$VACA</text>
+  <text class="sans" x="130" y="157" font-size="16" font-weight="700" fill="#f4f6fb">Vacamodiq</text>
+  <text class="sans" x="130" y="174" font-size="12" fill="#6f819c">Travel · ML</text>
+  <rect x="430" y="150" width="460" height="14" rx="7" fill="#ffffff" fill-opacity="0.04"/>
+  <rect class="bar" style="animation-delay:0.52s" x="430" y="150" width="127" height="14" rx="7" fill="url(#gold)"/>
+  <text class="mono" x="569" y="162" font-size="13" fill="#d9e1ee">152K</text>
+  <text class="mono" x="1000" y="162" font-size="13" text-anchor="end" fill="#a9b7cc">203</text>
+  <circle cx="1020" cy="157" r="4" fill="#b78cff"/>
+  <text class="mono" x="1032" y="162" font-size="12" letter-spacing="1.5" fill="#b78cff">R&amp;D</text>
+</g>
+<line x1="40" y1="182" x2="1160" y2="182" stroke="#ffffff" stroke-opacity="0.04"/>
+<g class="r" style="animation-delay:0.39s">
+  <rect x="40" y="190" width="72" height="26" rx="6" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text class="mono" x="76" y="208" text-anchor="middle" font-size="13" font-weight="700" fill="#f2c55c">$LEAD</text>
+  <text class="sans" x="130" y="203" font-size="16" font-weight="700" fill="#f4f6fb">LeadFlow</text>
+  <text class="sans" x="130" y="220" font-size="12" fill="#6f819c">Sales · CRM</text>
+  <rect x="430" y="196" width="460" height="14" rx="7" fill="#ffffff" fill-opacity="0.04"/>
+  <rect class="bar" style="animation-delay:0.64s" x="430" y="196" width="59" height="14" rx="7" fill="url(#gold)"/>
+  <text class="mono" x="501" y="208" font-size="13" fill="#d9e1ee">71K</text>
+  <text class="mono" x="1000" y="208" font-size="13" text-anchor="end" fill="#a9b7cc">18</text>
+  <circle cx="1020" cy="203" r="4" fill="#5ee6a8"/>
+  <text class="mono" x="1032" y="208" font-size="12" letter-spacing="1.5" fill="#5ee6a8">PRIVATE BETA</text>
+</g>
+<line x1="40" y1="228" x2="1160" y2="228" stroke="#ffffff" stroke-opacity="0.04"/>
+<g class="r" style="animation-delay:0.51s">
+  <rect x="40" y="236" width="72" height="26" rx="6" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text class="mono" x="76" y="254" text-anchor="middle" font-size="13" font-weight="700" fill="#f2c55c">$TALY</text>
+  <text class="sans" x="130" y="249" font-size="16" font-weight="700" fill="#f4f6fb">Tally</text>
+  <text class="sans" x="130" y="266" font-size="12" fill="#6f819c">Personal Finance</text>
+  <rect x="430" y="242" width="460" height="14" rx="7" fill="#ffffff" fill-opacity="0.04"/>
+  <rect class="bar" style="animation-delay:0.76s" x="430" y="242" width="56" height="14" rx="7" fill="url(#gold)"/>
+  <text class="mono" x="498" y="254" font-size="13" fill="#d9e1ee">67K</text>
+  <text class="mono" x="1000" y="254" font-size="13" text-anchor="end" fill="#a9b7cc">63</text>
+  <circle cx="1020" cy="249" r="4" fill="#5cc8ff"/>
+  <text class="mono" x="1032" y="254" font-size="12" letter-spacing="1.5" fill="#5cc8ff">V1</text>
+</g>
+<line x1="40" y1="274" x2="1160" y2="274" stroke="#ffffff" stroke-opacity="0.04"/>
+<g class="r" style="animation-delay:0.63s">
+  <rect x="40" y="282" width="72" height="26" rx="6" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text class="mono" x="76" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="#f2c55c">$NOEF</text>
+  <text class="sans" x="130" y="295" font-size="16" font-weight="700" fill="#f4f6fb">NoEfforts</text>
+  <text class="sans" x="130" y="312" font-size="12" fill="#6f819c">Careers · HR-tech</text>
+  <rect x="430" y="288" width="460" height="14" rx="7" fill="#ffffff" fill-opacity="0.04"/>
+  <rect class="bar" style="animation-delay:0.88s" x="430" y="288" width="27" height="14" rx="7" fill="url(#gold)"/>
+  <text class="mono" x="469" y="300" font-size="13" fill="#d9e1ee">32K</text>
+  <text class="mono" x="1000" y="300" font-size="13" text-anchor="end" fill="#a9b7cc">43</text>
+  <circle cx="1020" cy="295" r="4" fill="#b78cff"/>
+  <text class="mono" x="1032" y="300" font-size="12" letter-spacing="1.5" fill="#b78cff">PHASE A</text>
+</g>
+<line x1="40" y1="320" x2="1160" y2="320" stroke="#ffffff" stroke-opacity="0.04"/>
+<g class="r" style="animation-delay:0.75s">
+  <rect x="40" y="328" width="72" height="26" rx="6" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text class="mono" x="76" y="346" text-anchor="middle" font-size="13" font-weight="700" fill="#f2c55c">$KAIL</text>
+  <text class="sans" x="130" y="341" font-size="16" font-weight="700" fill="#f4f6fb">Kailo.fit</text>
+  <text class="sans" x="130" y="358" font-size="12" fill="#6f819c">Health · Fitness</text>
+  <rect x="430" y="334" width="460" height="14" rx="7" fill="#ffffff" fill-opacity="0.04"/>
+  <rect class="bar" style="animation-delay:1.00s" x="430" y="334" width="18" height="14" rx="7" fill="url(#gold)"/>
+  <text class="mono" x="460" y="346" font-size="13" fill="#d9e1ee">21K</text>
+  <text class="mono" x="1000" y="346" font-size="13" text-anchor="end" fill="#a9b7cc">19</text>
+  <circle cx="1020" cy="341" r="4" fill="#5cc8ff"/>
+  <text class="mono" x="1032" y="346" font-size="12" letter-spacing="1.5" fill="#5cc8ff">BETA</text>
+</g>
+<line x1="40" y1="366" x2="1160" y2="366" stroke="#ffffff" stroke-opacity="0.04"/>
+<g class="r" style="animation-delay:0.87s">
+  <rect x="40" y="374" width="72" height="26" rx="6" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text class="mono" x="76" y="392" text-anchor="middle" font-size="13" font-weight="700" fill="#f2c55c">$STIQ</text>
+  <text class="sans" x="130" y="387" font-size="16" font-weight="700" fill="#f4f6fb">STITCHIQ</text>
+  <text class="sans" x="130" y="404" font-size="12" fill="#6f819c">Manufacturing · CV</text>
+  <rect x="430" y="380" width="460" height="14" rx="7" fill="#ffffff" fill-opacity="0.04"/>
+  <rect class="bar" style="animation-delay:1.12s" x="430" y="380" width="7" height="14" rx="7" fill="url(#gold)"/>
+  <text class="mono" x="449" y="392" font-size="13" fill="#d9e1ee">8.5K</text>
+  <text class="mono" x="1000" y="392" font-size="13" text-anchor="end" fill="#a9b7cc">28</text>
+  <circle cx="1020" cy="387" r="4" fill="#5cc8ff"/>
+  <text class="mono" x="1032" y="392" font-size="12" letter-spacing="1.5" fill="#5cc8ff">BETA</text>
+</g>
+</svg>
