@@ -1,0 +1,15 @@
+{
+  "game": 1,
+  "status": "playing",
+  "mines": [],
+  "revealed": [],
+  "moves": 0,
+  "lastMoves": [],
+  "players": {},
+  "stats": {
+    "won": 0,
+    "lost": 0
+  },
+  "hallOfFame": {},
+  "lostBy": null
+}
