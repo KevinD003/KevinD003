@@ -1,0 +1,59 @@
+name: Minesweeper move
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+# One move at a time, in the order they arrive — never drop one.
+concurrency:
+  group: minesweeper
+  cancel-in-progress: false
+
+jobs:
+  play:
+    if: startsWith(github.event.issue.title, 'mines|')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Play the move
+        id: move
+        # Title and login come from the visitor: pass them as env, never
+        # interpolate them into the script.
+        env:
+          TITLE: ${{ github.event.issue.title }}
+          LOGIN: ${{ github.event.issue.user.login }}
+        run: |
+          set +e
+          node tools/minesweeper.mjs move "$TITLE" "$LOGIN" > result.txt
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat result.txt
+
+      - name: Commit the board
+        if: steps.move.outputs.code == '0'
+        env:
+          LOGIN: ${{ github.event.issue.user.login }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add game/state.json README.md
+          git commit -m "minesweeper: @$LOGIN played #$NUMBER"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 3; done
+
+      - name: Reply and close
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          printf '%s\n\n[Back to the board →](https://github.com/${{ github.repository_owner }})\n' "$(cat result.txt)" > reply.md
+          gh issue comment "$NUMBER" --repo "$GITHUB_REPOSITORY" --body-file reply.md
+          gh issue close "$NUMBER" --repo "$GITHUB_REPOSITORY"
