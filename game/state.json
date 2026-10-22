@@ -1,17 +1,63 @@
 {
   "game": 2,
   "status": "playing",
-  "mines": [],
-  "revealed": [],
-  "moves": 0,
-  "lastMoves": [],
-  "players": {},
+  "mines": [
+    44,
+    62,
+    49,
+    52,
+    54,
+    37,
+    22,
+    2,
+    31,
+    21
+  ],
+  "revealed": [
+    19,
+    28,
+    27,
+    36,
+    35,
+    34,
+    43,
+    42,
+    41,
+    33,
+    40,
+    32,
+    25,
+    26,
+    18,
+    17,
+    24,
+    16,
+    9,
+    8,
+    1,
+    0,
+    10,
+    11,
+    20,
+    12
+  ],
+  "moves": 1,
+  "lastMoves": [
+    {
+      "login": "KevinD003",
+      "cell": "D3",
+      "boom": false
+    }
+  ],
+  "players": {
+    "KevinD003": 26
+  },
   "stats": {
     "won": 0,
     "lost": 1
   },
   "hallOfFame": {
-    "KevinD003": 32
+    "KevinD003": 58
   },
   "lostBy": null
 }
