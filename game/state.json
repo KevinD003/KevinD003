@@ -1,6 +1,6 @@
 {
   "game": 2,
-  "status": "playing",
+  "status": "lost",
   "mines": [
     44,
     62,
@@ -41,8 +41,13 @@
     20,
     12
   ],
-  "moves": 1,
+  "moves": 2,
   "lastMoves": [
+    {
+      "login": "KevinD003",
+      "cell": "E6",
+      "boom": true
+    },
     {
       "login": "KevinD003",
       "cell": "D3",
@@ -54,10 +59,13 @@
   },
   "stats": {
     "won": 0,
-    "lost": 1
+    "lost": 2
   },
   "hallOfFame": {
     "KevinD003": 58
   },
-  "lostBy": null
+  "lostBy": {
+    "login": "KevinD003",
+    "cell": 44
+  }
 }
