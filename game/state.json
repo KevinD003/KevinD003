@@ -53,10 +53,21 @@
     41,
     48,
     40,
-    2
+    2,
+    0,
+    9,
+    8,
+    17,
+    16,
+    1
   ],
-  "moves": 2,
+  "moves": 3,
   "lastMoves": [
+    {
+      "login": "KevinD003",
+      "cell": "A1",
+      "boom": false
+    },
     {
       "login": "KevinD003",
       "cell": "C1",
@@ -69,14 +80,14 @@
     }
   ],
   "players": {
-    "KevinD003": 40
+    "KevinD003": 46
   },
   "stats": {
     "won": 0,
     "lost": 2
   },
   "hallOfFame": {
-    "KevinD003": 98
+    "KevinD003": 104
   },
   "lostBy": null
 }
