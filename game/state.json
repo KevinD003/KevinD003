@@ -39,10 +39,16 @@
     44,
     63,
     35,
-    16
+    16,
+    46
   ],
-  "moves": 7,
+  "moves": 8,
   "lastMoves": [
+    {
+      "login": "KevinD003",
+      "cell": "G6",
+      "boom": false
+    },
     {
       "login": "KevinD003",
       "cell": "A3",
@@ -62,22 +68,17 @@
       "login": "KevinD003",
       "cell": "E6",
       "boom": false
-    },
-    {
-      "login": "KevinD003",
-      "cell": "A8",
-      "boom": false
     }
   ],
   "players": {
-    "KevinD003": 26
+    "KevinD003": 27
   },
   "stats": {
     "won": 0,
     "lost": 3
   },
   "hallOfFame": {
-    "KevinD003": 131
+    "KevinD003": 132
   },
   "lostBy": null
 }
