@@ -1,95 +1,11 @@
 {
-  "game": 4,
-  "status": "lost",
-  "mines": [
-    55,
-    43,
-    25,
-    15,
-    23,
-    1,
-    51,
-    28,
-    50,
-    19
-  ],
-  "revealed": [
-    3,
-    12,
-    11,
-    10,
-    4,
-    13,
-    22,
-    21,
-    20,
-    14,
-    6,
-    5,
-    2,
-    34,
-    56,
-    57,
-    49,
-    48,
-    41,
-    40,
-    33,
-    32,
-    44,
-    63,
-    35,
-    16,
-    46,
-    26,
-    37,
-    60,
-    31,
-    0,
-    52,
-    45,
-    54,
-    53,
-    62,
-    61,
-    38,
-    47,
-    39,
-    30,
-    29,
-    36
-  ],
-  "moves": 16,
-  "lastMoves": [
-    {
-      "login": "KevinD003",
-      "cell": "D7",
-      "boom": true
-    },
-    {
-      "login": "KevinD003",
-      "cell": "F6",
-      "boom": false
-    },
-    {
-      "login": "KevinD003",
-      "cell": "E7",
-      "boom": false
-    },
-    {
-      "login": "KevinD003",
-      "cell": "A1",
-      "boom": false
-    },
-    {
-      "login": "KevinD003",
-      "cell": "H4",
-      "boom": false
-    }
-  ],
-  "players": {
-    "KevinD003": 44
-  },
+  "game": 5,
+  "status": "playing",
+  "mines": [],
+  "revealed": [],
+  "moves": 0,
+  "lastMoves": [],
+  "players": {},
   "stats": {
     "won": 0,
     "lost": 4
@@ -97,8 +13,5 @@
   "hallOfFame": {
     "KevinD003": 149
   },
-  "lostBy": {
-    "login": "KevinD003",
-    "cell": 51
-  }
+  "lostBy": null
 }
